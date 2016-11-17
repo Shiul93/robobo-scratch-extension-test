@@ -36,7 +36,7 @@
         commandid = commandid+1;
         ws.send(message);
     };
-    ext.moveRobobo(wheel,degrees,speed){
+    ext.moveRobobo = function(wheel,degrees,speed){
       var message = JSON.stringify({
           "name": "MOVEBYDEGREES",
           "parameters": {
