@@ -1,6 +1,7 @@
 (function(ext) {
     // Cleanup function when the extension is unloaded
     var ws;
+    var commandid = 0;
 
     ext._shutdown = function() {};
 
@@ -23,10 +24,24 @@
         ws.onclose = function() {}
     };
 
+    ext.talkRobobo = function(text){
+        var message = JSON.stringify({
+            "name": "TALK",
+            "parameters": {
+                value: text
+            },
+            "id": commandid
+        });
+
+        commandid = commandid+1;
+        ws.send(message);
+    }
+
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
           [' ', 'set ROBOBO IP %s',                    'connectToRobobo'],
+          [' ', 'Say %s',                    'talkRobobo'],
         ]
     };
 
