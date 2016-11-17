@@ -57,7 +57,7 @@
           [' ', 'set ROBOBO IP %s',                    'connectToRobobo'],
           [' ', 'say %s',                    'talkRobobo'],
           [' ', 'Move wheel %m.wheels by %i degrees at speed %i',                    'talkRobobo'],
-        ]
+        ],
         menus: {
         motorDirection: ['forward', 'backward'],
         wheels: ['right', 'left'],
