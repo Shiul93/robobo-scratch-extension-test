@@ -31,5 +31,5 @@
     };
 
     // Register the extension
-    ScratchExtensions.register('Sample extension', descriptor, ext);
+    ScratchExtensions.register('Robobo Extension', descriptor, ext);
 })({});
