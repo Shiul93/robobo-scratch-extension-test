@@ -36,14 +36,34 @@
         commandid = commandid+1;
         ws.send(message);
     }
+    ext.moveRobobo(wheel,degrees,speed){
+      var message = JSON.stringify({
+          "name": "MOVEBYDEGREES",
+          "parameters": {
+              wheel: wheel,
+              degrees: degrees,
+              speed:speed,
+          },
+          "id": commandid
+      });
+
+      commandid = commandid+1;
+      ws.send(message);
+    }
 
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
           [' ', 'set ROBOBO IP %s',                    'connectToRobobo'],
-          [' ', 'Say %s',                    'talkRobobo'],
+          [' ', 'say %s',                    'talkRobobo'],
+          [' ', 'Move wheel %m.wheels by %i degrees at speed %i',                    'talkRobobo'],
         ]
+        menus: {
+        motorDirection: ['forward', 'backward'],
+        wheels: ['right', 'left'],
+    },
     };
+
 
     // Register the extension
     ScratchExtensions.register('Robobo Extension', descriptor, ext);
