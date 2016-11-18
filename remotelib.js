@@ -12,20 +12,20 @@ Remote.prototype = {
 
 
   connect :function(ip,port) {
-    Remote.prototype.ws = new WebSocket("ws://"+this.ip+":"+this.port);
+    this.ws = new WebSocket("ws://"+this.ip+":"+this.port);
 
-    Remote.prototype.ws.onopen = function() {
+    this.ws.onopen = function() {
       console.log("Connection Stablished");
 
     }
 
-    Remote.prototype.ws.onmessage = function(evt) {
+    this.ws.addEventListener('message', function(evt) {
       var received_msg = evt.data;
-      Remote.prototype.handleMessage(received_msg)
+      this.handleMessage(received_msg)
 
-    }
+    }.bind(this));
 
-    Remote.prototype.ws.onclose = function() {
+    this.ws.onclose = function() {
       console.log("Connection Closed");
     }
 
@@ -34,7 +34,7 @@ Remote.prototype = {
 
   sendMessage: function(message) {
     this.commandid = this.commandid +1;
-    Remote.prototype.ws.send(message);
+    this.ws.send(message);
 
     //END OF SENDMESSAGE FUNCTION
   },
