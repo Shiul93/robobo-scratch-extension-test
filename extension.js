@@ -12,8 +12,8 @@
     };
 
     //Connection Block
-    ext.connectToRobobo = function(ip) {
-        ws =new WebSocket("ws://"+ip+":22226");
+    ext.connectToRobobo = function(ip,port) {
+        ws =new WebSocket("ws://"+ip+":"+port);
 
         ws.onopen = function() {};
 
@@ -54,7 +54,7 @@
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-          [' ', 'set ROBOBO IP %s',                    'connectToRobobo'],
+          [' ', 'set Robobo IP %s and port %s',                    'connectToRobobo'],
           [' ', 'say %s',                    'talkRobobo'],
           [' ', 'Move wheel %m.wheels by %i degrees at speed %i',                    'talkRobobo'],
         ],
