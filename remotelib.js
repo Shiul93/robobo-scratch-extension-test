@@ -66,7 +66,21 @@ Remote.prototype = {
         "id": this.commandid
     });
 
-    //END OF MOVEWHEELS FUNCTION
+    //END OF MOVEDEGREE FUNCTION
+  },
+
+  moveWheelsByDegree: function(wheel,time,speed) {
+    var message = JSON.stringify({
+        "name": "MOVEBYTIME",
+        "parameters": {
+            wheel: wheel,
+            degrees: degrees,
+            speed:speed
+        },
+        "id": this.commandid
+    });
+
+    //END OF MOVETIME FUNCTION
   },
 
   movePan: function(pos, vel) {
