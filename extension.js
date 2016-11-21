@@ -58,7 +58,7 @@
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-          [' ', 'set Robobo IP %s and port %s','connectToRobobo'],
+          [' ', 'set Robobo IP %s and port %s','connectToRobobo','192.168.0.103','22226'],
           [' ', 'say %s','talkRobobo'],
           [' ', 'Move wheel %m.wheels by %s degrees at speed %s','moveRoboboDeg'],
           [' ', 'Move wheel %m.wheels at speed %s for %s milliseconds','moveRoboboTime'],
