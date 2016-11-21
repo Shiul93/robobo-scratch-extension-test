@@ -28,31 +28,31 @@
         rem.talk(text);
     };
     ext.moveRobobo = function(wheel,degrees,speed){
-      var message = JSON.stringify({
-          "name": "MOVEBYDEGREES",
-          "parameters": {
-              wheel: wheel,
-              degrees: degrees,
-              speed:speed,
-          },
-          "id": commandid
-      });
-
-      commandid = commandid+1;
-      ws.send(message);
+      rem.moveWheelsByDegree(wheel,degrees,speed);
     };
+
+    ext.movePanRobobo = function(degrees){
+      rem.movePan(degrees,"10");
+    };
+
+    ext.moveTiltRobobo = function(degrees){
+      rem.moveTilt(degrees,"10");
+    };
+
 
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-          [' ', 'set Robobo IP %s and port %s',                    'connectToRobobo'],
-          [' ', 'say %s',                    'talkRobobo'],
-          [' ', 'Move wheel %m.wheels by %i degrees at speed %i',                    'talkRobobo'],
+          [' ', 'set Robobo IP %s and port %s','connectToRobobo'],
+          [' ', 'say %s','talkRobobo'],
+          [' ', 'Move wheel %m.wheels by %s degrees at speed %s','moveRobobo'],
+          [' ', 'Move pan to %s','movePanRobobo'],
+          [' ', 'Move tilt %s','moveTiltRobobo'],
         ],
         menus: {
-        motorDirection: ['forward', 'backward'],
-        wheels: ['right', 'left'],
-    },
+          motorDirection: ['forward', 'backward'],
+          wheels: ['right', 'left'],
+        },
     };
 
 
