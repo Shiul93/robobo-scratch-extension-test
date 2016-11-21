@@ -54,19 +54,24 @@
       rem.setLedColor(led,status);
     };
 
+    ext.turnInPlace = function(degrees) {
+      rem.turnInPlace(degrees);
+    }
+
 
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
           [' ', 'set Robobo IP %s and port %s','connectToRobobo','192.168.0.103','22226'],
-          [' ', 'say %s','talkRobobo'],
-          [' ', 'Move wheel %m.wheels by %s degrees at speed %s','moveRoboboDeg'],
-          [' ', 'Move wheel %m.wheels at speed %s for %s milliseconds','moveRoboboTime'],
-          [' ', 'Move pan to %s','movePanRobobo'],
-          [' ', 'Move tilt %s','moveTiltRobobo'],
-          [' ', 'set emotion %m.emotions','changeEmotion'],
-          [' ', 'set led %m.leds color to %m.colors','setLedColor'],
-          [' ', 'set led %m.leds status to %m.status','changeLedStatus'],
+          [' ', 'say %s','talkRobobo','hello world'],
+          [' ', 'Move wheel %m.wheels by %s degrees at speed %s','moveRoboboDeg','both','180','50'],
+          [' ', 'Move wheel %m.wheels at speed %s for %s milliseconds','moveRoboboTime','both','50','1000'],
+          [' ', 'Move pan to %s','movePanRobobo','180'],
+          [' ', 'Turn in place %s degrees','turnInPlace','360'],
+          [' ', 'Move tilt %s','moveTiltRobobo','90'],
+          [' ', 'set emotion %m.emotions','changeEmotion','normal'],
+          [' ', 'set led %m.leds color to %m.colors','setLedColor','all','blue'],
+          [' ', 'set led %m.leds status to %m.status','changeLedStatus','all', 'off'],
         ],
         menus: {
           motorDirection: ['forward', 'backward'],

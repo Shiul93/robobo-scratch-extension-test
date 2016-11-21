@@ -69,7 +69,7 @@ Remote.prototype = {
     //END OF MOVEDEGREE FUNCTION
   },
 
-  moveWheelsByDegree: function(wheel,time,speed) {
+  moveWheelsByTime: function(wheel,time,speed) {
     var message = JSON.stringify({
         "name": "MOVEBYTIME",
         "parameters": {
@@ -81,6 +81,18 @@ Remote.prototype = {
     });
 
     //END OF MOVETIME FUNCTION
+  },
+
+  turnInPlace: function(degrees) {
+    var message = JSON.stringify({
+        "name": "TURNINPLACE",
+        "parameters": {
+            degrees: degrees
+        },
+        "id": this.commandid
+    });
+
+    //END OF TURNINPLACE FUNCTION
   },
 
   movePan: function(pos, vel) {
