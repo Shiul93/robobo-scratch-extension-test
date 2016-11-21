@@ -1,7 +1,13 @@
 (function(ext) {
     // Cleanup function when the extension is unloaded
-    var ws;
+    var rem;
     var commandid = 0;
+
+    $.getScript("remotelib.js", function(){
+
+   alert("Script loaded but not necessarily executed.");
+
+    });
 
     ext._shutdown = function() {};
 
@@ -13,28 +19,13 @@
 
     //Connection Block
     ext.connectToRobobo = function(ip,port) {
-        ws =new WebSocket("ws://"+ip+":"+port);
-
-        ws.onopen = function() {};
-
-        ws.onmessage = function(evt) {var received_msg = evt.data;
-        console.log(evt.data)
-      };
-
-        ws.onclose = function() {}
+        rem = new Remote(ip,port);
+        rem.connect(ip,port);
     };
 
     ext.talkRobobo = function(text){
-        var message = JSON.stringify({
-            "name": "TALK",
-            "parameters": {
-                value: text
-            },
-            "id": commandid
-        });
 
-        commandid = commandid+1;
-        ws.send(message);
+        rem.talk(text);
     };
     ext.moveRobobo = function(wheel,degrees,speed){
       var message = JSON.stringify({
