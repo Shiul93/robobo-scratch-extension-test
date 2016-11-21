@@ -27,8 +27,11 @@
 
         rem.talk(text);
     };
-    ext.moveRobobo = function(wheel,degrees,speed){
+    ext.moveRoboboDeg = function(wheel,degrees,speed){
       rem.moveWheelsByDegree(wheel,degrees,speed);
+    };
+    ext.moveRoboboTime = function(wheel,speed,time){
+      rem.moveWheelsByDegree(wheel,time,speed);
     };
 
     ext.movePanRobobo = function(degrees){
@@ -39,19 +42,26 @@
       rem.moveTilt(degrees,"10");
     };
 
+    ext.changeEmotion = function(emotion){
+      rem.changeEmotion(emotion);
+    };
+
 
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
           [' ', 'set Robobo IP %s and port %s','connectToRobobo'],
           [' ', 'say %s','talkRobobo'],
-          [' ', 'Move wheel %m.wheels by %s degrees at speed %s','moveRobobo'],
+          [' ', 'Move wheel %m.wheels by %s degrees at speed %s','moveRoboboDeg'],
+          [' ', 'Move wheel %m.wheels at speed %s for %s milliseconds','moveRoboboTime'],
           [' ', 'Move pan to %s','movePanRobobo'],
           [' ', 'Move tilt %s','moveTiltRobobo'],
+          [' ', 'set emotion %m.emotions','changeEmotion'],
         ],
         menus: {
           motorDirection: ['forward', 'backward'],
-          wheels: ['right', 'left'],
+          wheels: ['right', 'left','both'],
+          emotions: ['happy','laughting','sad','angry','surprised','normal'],
         },
     };
 
