@@ -136,10 +136,11 @@ Remote.prototype = {
     //END OF CHANGEEMOTION FUNCTION
   },
 
-  setLedColor: function (color) {
+  setLedColor: function (led,color) {
     var message = JSON.stringify({
         "name": "LEDCOLOR",
         "parameters": {
+            led:led,
             color:color
         },
         "id": this.commandid
