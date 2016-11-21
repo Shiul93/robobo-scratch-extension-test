@@ -3,7 +3,7 @@
     var rem;
     var commandid = 0;
 
-    $.getScript("remotelib.js", function(){
+    $.getScript("https://shiul93.github.io/robobo-scratch-extension-test/remotelib.js", function(){
 
    alert("Script loaded but not necessarily executed.");
 
