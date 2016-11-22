@@ -1,17 +1,23 @@
 
 //Constructor of the remote control object
-function Remote(ip,port){
+function Remote(ip){
   this.ip = ip;
-  this.port = port;
+  this.port = 40404;
   this.ws = undefined;
   this.commandid = 0;
+  this.statusmap = new Map();
+  this.callbackmap = new Map();
 //END OF REMOTE OBJECT
 };
 
 Remote.prototype = {
 
 
-  connect :function(ip,port) {
+  registerCallback: function (name,callback) {
+    this.callbackmap.set(name,callback);
+    //END OF REGISTERCALLBACK FUNCTION
+  },
+  connect :function() {
     this.ws = new WebSocket("ws://"+this.ip+":"+this.port);
 
     this.ws.onopen = function() {
@@ -21,7 +27,7 @@ Remote.prototype = {
 
     this.ws.addEventListener('message', function(evt) {
       var received_msg = evt.data;
-      this.handleMessage(received_msg)
+      this.handleMessage(received_msg);
 
     }.bind(this));
 
@@ -81,6 +87,20 @@ Remote.prototype = {
     });
 
     //END OF MOVETIME FUNCTION
+  },
+
+  moveWheelsSeparated: function(lSpeed,rSpeed,time) {
+    var message = JSON.stringify({
+        "name": "MOVETWOWHEELS",
+        "parameters": {
+            lspeed: lSpeed,
+            rspeed: rSpeed,
+            time:time
+        },
+        "id": this.commandid
+    });
+
+    //END OF MOVETWOWHEELS FUNCTION
   },
 
   turnInPlace: function(degrees) {
@@ -180,6 +200,12 @@ Remote.prototype = {
     //END OF BRIGHTNESSCHANGED FUNCTION
   },
 
+  readIR: function (irnumber) {
+
+    return this.statusmap.get("ir_"+irnumber);
+    //END OF GETLIGHTBRIGHTNESS FUNCTION
+  },
+
   //ENDSENSING
 
   //VISION
@@ -187,6 +213,11 @@ Remote.prototype = {
   colorDetected : function (callback) {
     callback();
   },
+
+  getColor : function () {
+    return this.statusmap.get("color");
+    //END OF GETCOLOR FUNCTION
+  }
 
   //ENDVISION
 
@@ -197,6 +228,14 @@ Remote.prototype = {
     console.log(msg.name);
 
     if (msg.name == "TapNumber"){
+      console.log(msg.value);
+    }
+    if (msg.name == "NEWCOLOR"){
+      (this.callbackmap.get("onNewColor"))();
+      console.log(msg.value);
+    }
+
+    if (msg.name == "IRSTATUS"){
       console.log(msg.value);
     }
     //END MANAGESTATUS FUNCTION
