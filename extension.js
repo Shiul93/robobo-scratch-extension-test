@@ -7,7 +7,7 @@
 
     $.getScript("https://shiul93.github.io/robobo-scratch-extension-test/remotelib.js", function(){
 
-   Console.log("Script loaded");
+
 
     });
 

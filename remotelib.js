@@ -80,7 +80,7 @@ Remote.prototype = {
         "name": "MOVEBYTIME",
         "parameters": {
             wheel: wheel,
-            degrees: degrees,
+            time: time,
             speed:speed
         },
         "id": this.commandid
@@ -217,7 +217,7 @@ Remote.prototype = {
   getColor : function () {
     return this.statusmap.get("color");
     //END OF GETCOLOR FUNCTION
-  }
+  },
 
   //ENDVISION
 
