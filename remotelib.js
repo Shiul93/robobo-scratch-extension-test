@@ -71,7 +71,7 @@ Remote.prototype = {
         },
         "id": this.commandid
     });
-
+    this.sendMessage(message)
     //END OF MOVEDEGREE FUNCTION
   },
 
@@ -85,7 +85,7 @@ Remote.prototype = {
         },
         "id": this.commandid
     });
-
+    this.sendMessage(message)
     //END OF MOVETIME FUNCTION
   },
 
@@ -99,7 +99,7 @@ Remote.prototype = {
         },
         "id": this.commandid
     });
-
+    this.sendMessage(message)
     //END OF MOVETWOWHEELS FUNCTION
   },
 
@@ -111,7 +111,7 @@ Remote.prototype = {
         },
         "id": this.commandid
     });
-
+    this.sendMessage(message)
     //END OF TURNINPLACE FUNCTION
   },
 
