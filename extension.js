@@ -41,7 +41,7 @@
         rem.talk(text);
     };
     ext.moveRobobo = function(wheel,quantity,mtype,speed){
-      if (mtype='degrees'){
+      if (mtype=="degrees"){
         rem.moveWheelsByDegree(wheel,quantity,speed);
       }else {
         rem.moveWheelsByTime(wheel,quantity,speed);
