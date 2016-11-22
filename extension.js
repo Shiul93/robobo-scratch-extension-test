@@ -3,6 +3,7 @@
     var rem;
     var commandid = 0;
     var newcolor = false;
+    var lastIrChange = "";
 
     $.getScript("https://shiul93.github.io/robobo-scratch-extension-test/remotelib.js", function(){
 
@@ -22,11 +23,16 @@
     ext.onNewColor = function () {
       newcolor = true;
     }
+
+    ext.onIrChanged = function (ir) {
+      lastIrChange = ir;
+    }
     //Connection Block
     ext.connectToRobobo = function(ip) {
         rem = new Remote(ip);
         rem.connect(ip);
         rem.registerCallback("onNewColor",ext.onNewColor);
+        rem.registerCallback("onIrChanged",ext.onIrChanged);
 
     };
 
@@ -69,15 +75,27 @@
 
     ext.turnInPlace = function(degrees) {
       rem.turnInPlace(degrees);
-    }
+    };
     ext.readIr = function(ir) {
       return rem.turnInPlace(ir);
-    }
-    ext.readCol = function() {
+    };
+    ext.newCol = function() {
       if (newcolor){
         newcolor = false;
         return true;
       }else {
+        return false;
+      }
+    };
+
+    ext.readCol = function() {
+      return rem.getColor();
+    }
+    ext.changedIr = function(irname) {
+      if (lastIrChange == irname){
+        return true;
+      }else {
+        lastIrChange = "";
         return false;
       }
     }
@@ -86,19 +104,19 @@
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-          [' ', 'set Robobo IP %s','connectToRobobo','192.168.0.103'],
+          [' ', 'connect ROBOBO at %s','connectToRobobo','192.168.0.103'],
           [' ', 'say %s','talkRobobo','hello world'],
-          [' ', 'Move wheel %m.wheels by %s %m.mtype at speed %s','moveRobobo','both','1','seconds','50'],
-          [' ', 'Move wheel left at speed %s and wheel right at speed %s for %s seconds','moveRoboboWheels','50','50','1000'],
-          [' ', 'Move pan to %s at speed %s','movePanRobobo','180','5'],
-          [' ', 'Turn in place %s degrees','turnInPlace','360'],
-          [' ', 'Move tilt %s at speed %s','moveTiltRobobo','90','5'],
-          [' ', 'Change emotion to %m.emotions','changeEmotion','normal'],
+          [' ', 'move wheel %m.wheels by %s %m.mtype at speed %s','moveRobobo','both','1','seconds','50'],
+          [' ', 'move wheel left at speed %s and wheel right at speed %s for %s seconds','moveRoboboWheels','50','50','1000'],
+          [' ', 'move pan to %s at speed %s','movePanRobobo','180','5'],
+          [' ', 'move tilt to %s at speed %s','moveTiltRobobo','90','5'],
+          [' ', 'change emotion to %m.emotions','changeEmotion','normal'],
           [' ', 'set led %m.leds color to %m.colors','setLedColor','all','blue'],
           [' ', 'set led %m.leds %m.status','changeLedStatus','all', 'off'],
-          ['r', 'Read IR %m.ir','readIr','0'],
-          ['r', 'Read color detected','readCol'],
-          ['h', 'when color is detected','readCol'],
+          ['r', 'read IR %m.ir','readIr','0'],
+          ['r', 'read color detected','readCol'],
+          ['h', 'when color is detected','newCol'],
+          ['h', 'when ir %m.ir changed','changedIr'],
 
         ],
         menus: {
