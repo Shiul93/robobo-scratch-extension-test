@@ -208,7 +208,7 @@ Remote.prototype = {
     //END OF GETLIGHTBRIGHTNESS FUNCTION
   },
 
-  mirarIr = function (irnumber) {
+  mirarIr : function (irnumber) {
     console.log("ASDF");
 
     console.log(this.statusmap.get("IRSensorStatus"+irnumber).value);
