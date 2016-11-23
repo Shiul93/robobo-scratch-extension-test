@@ -203,7 +203,7 @@ Remote.prototype = {
   consultIR: function (irnumber) {
     console.log("ASDF");
     console.log(this.statusmap.get("IRSensorStatus"+irnumber).value);
-    return parseInt(this.statusmap.get("IRSensorStatus"+irnumber));
+    return this.statusmap.get("IRSensorStatus"+irnumber).value;
     //END OF GETLIGHTBRIGHTNESS FUNCTION
   },
 
@@ -242,7 +242,7 @@ Remote.prototype = {
         //console.log(key);
 
 
-          this.statusmap.set(key,msg.value[key]);
+          this.statusmap.set(key,parseInt(msg.value[key]);
           console.log(this.statusmap);
 
         //  console.log(msg.value[key]);
