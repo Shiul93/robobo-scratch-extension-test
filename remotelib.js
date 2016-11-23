@@ -235,7 +235,7 @@ Remote.prototype = {
   manageStatus : function (msg) {
 
 
-    console.log(msg.name);
+    //console.log(msg.name);
 
     if (msg.name == "TapNumber"){
       console.log(msg.value);
