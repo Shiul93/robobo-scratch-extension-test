@@ -77,7 +77,7 @@
       rem.turnInPlace(degrees);
     };
     ext.readIr = function(ir) {
-      return rem.readIr(ir);
+      return rem.consultIr(ir);
     };
     ext.newCol = function() {
       if (newcolor){
@@ -113,7 +113,7 @@
           [' ', 'change emotion to %m.emotions','changeEmotion','normal'],
           [' ', 'set led %m.leds color to %m.colors','setLedColor','all','blue'],
           [' ', 'set led %m.leds %m.status','changeLedStatus','all', 'off'],
-          ['r', 'read IR %m.ir','readIr','0'],
+          ['r', 'read IR %m.ir','readIr','1'],
           ['r', 'read color detected','readCol'],
           ['h', 'when color is detected','newCol'],
           ['h', 'when ir %m.ir changed','changedIr'],
