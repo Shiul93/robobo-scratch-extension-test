@@ -76,12 +76,7 @@
     ext.turnInPlace = function(degrees) {
       rem.turnInPlace(degrees);
     };
-    ext.readIrValue = function(ir) {
-      console.log("ESTOY AQUI");
-      var value = 0
-      value = rem.consultIr();
-      return value;
-    };
+
     ext.newCol = function() {
       if (newcolor){
         newcolor = false;
@@ -103,6 +98,13 @@
       }
     };
 
+    ext.readIrValue = function(ir) {
+      console.log("ESTOY AQUI");
+      var value = 0
+      value = rem.consultIr(ir);
+      console.log(value);
+      return value;
+    };
 
     // Block and block menu descriptions
     var descriptor = {
