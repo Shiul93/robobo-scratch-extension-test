@@ -237,6 +237,11 @@ Remote.prototype = {
 
     if (msg.name == "IRSTATUS"){
       console.log(msg.value);
+      for (var key in msg.value) {
+        if (key.hasOwnProperty(key)) {
+          this.statusmap.add(key,msg.value[key]);
+        }
+      }
     }
     //END MANAGESTATUS FUNCTION
   },
