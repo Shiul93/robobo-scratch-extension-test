@@ -78,7 +78,8 @@
     };
     ext.readIr = function(ir) {
       console.log("ESTOY AQUI");
-      var value =rem.consultIr(ir);
+      var value = 0
+      value = rem.consultIr();
       return value;
     };
     ext.newCol = function() {
