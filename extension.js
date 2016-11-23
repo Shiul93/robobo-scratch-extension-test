@@ -76,7 +76,7 @@
     ext.turnInPlace = function(degrees) {
       rem.turnInPlace(degrees);
     };
-    ext.readIr = function(ir) {
+    ext.readIrValue = function(ir) {
       console.log("ESTOY AQUI");
       var value = 0
       value = rem.consultIr();
@@ -116,7 +116,7 @@
           [' ', 'change emotion to %m.emotions','changeEmotion','normal'],
           [' ', 'set led %m.leds color to %m.colors','setLedColor','all','blue'],
           [' ', 'set led %m.leds %m.status','changeLedStatus','all', 'off'],
-          ['r', 'read IR %m.ir','readIr','1'],
+          ['r', 'read IR %m.ir','readIrValue','1'],
           ['r', 'read color detected','readCol'],
           ['h', 'when color is detected','newCol'],
           ['h', 'when ir %m.ir changed','changedIr'],
