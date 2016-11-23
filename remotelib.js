@@ -241,7 +241,7 @@ Remote.prototype = {
         console.log(key);
 
 
-          this.statusmap.add(key,msg.value[key]);
+          this.statusmap.set(key,msg.value[key]);
 
           console.log(msg.value[key]);
 
