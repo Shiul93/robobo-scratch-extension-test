@@ -236,10 +236,12 @@ Remote.prototype = {
     }
 
     if (msg.name == "IRSTATUS"){
-      console.log(msg.value);
+
       for (var key in msg.value) {
         if (key.hasOwnProperty(key)) {
           this.statusmap.add(key,msg.value[key]);
+          console.log(key);
+          console.log(msg.value[key]);
         }
       }
     }
