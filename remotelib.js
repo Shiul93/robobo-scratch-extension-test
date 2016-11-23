@@ -201,7 +201,7 @@ Remote.prototype = {
   },
 
   readIR: function (irnumber) {
-
+    console.log(this.statusmap.get("IRSensorStatus"+irnumber).value);
     return this.statusmap.get("IRSensorStatus"+irnumber).value;
     //END OF GETLIGHTBRIGHTNESS FUNCTION
   },
@@ -238,12 +238,12 @@ Remote.prototype = {
     if (msg.name == "IRSTATUS"){
 
       for (var key in msg.value) {
-        console.log(key);
+        //console.log(key);
 
 
           this.statusmap.set(key,msg.value[key]);
 
-          console.log(msg.value[key]);
+        //  console.log(msg.value[key]);
 
       }
     }
