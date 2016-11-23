@@ -48,7 +48,7 @@ Remote.prototype = {
   handleMessage: function(message) {
 
     var jsonmsg = JSON.parse(message)
-    console.log(typeof(jsonmsg.name) == 'string');
+    //console.log(typeof(jsonmsg.name) == 'string');
     if (typeof(jsonmsg.name) == 'string'){
       this.manageStatus(jsonmsg);
     }else if (typeof(jsonmsg.commandid) != "undefined") {
