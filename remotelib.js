@@ -200,9 +200,17 @@ Remote.prototype = {
     //END OF BRIGHTNESSCHANGED FUNCTION
   },
 
-  consultIR: function () {
+  consultIR : function (irnumber) {
     console.log("ASDF");
-    var irnumber = 1;
+
+    console.log(this.statusmap.get("IRSensorStatus"+irnumber).value);
+    return this.statusmap.get("IRSensorStatus"+irnumber).value;
+    //END OF GETLIGHTBRIGHTNESS FUNCTION
+  },
+
+  mirarIr = function (irnumber) {
+    console.log("ASDF");
+
     console.log(this.statusmap.get("IRSensorStatus"+irnumber).value);
     return this.statusmap.get("IRSensorStatus"+irnumber).value;
     //END OF GETLIGHTBRIGHTNESS FUNCTION
@@ -244,7 +252,7 @@ Remote.prototype = {
 
 
           this.statusmap.set(key,parseInt(msg.value[key]));
-          console.log(this.statusmap);
+          //console.log(this.statusmap);
 
         //  console.log(msg.value[key]);
 
