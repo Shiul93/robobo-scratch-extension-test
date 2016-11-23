@@ -242,7 +242,7 @@ Remote.prototype = {
         //console.log(key);
 
 
-          this.statusmap.set(key,parseInt(msg.value[key]);
+          this.statusmap.set(key,parseInt(msg.value[key]));
           console.log(this.statusmap);
 
         //  console.log(msg.value[key]);
