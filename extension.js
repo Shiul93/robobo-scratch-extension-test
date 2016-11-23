@@ -99,9 +99,9 @@
     };
 
     ext.readIrValue = function(ir) {
-      console.log("ESTOY AQUI");
+      console.log("ESTOY AQUI " + ir);
       var value = 0
-      value = rem.consultIr(ir);
+      value = rem.mirarIr(ir);
       console.log(value);
       return value;
     };
