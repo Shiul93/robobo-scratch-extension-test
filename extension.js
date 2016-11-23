@@ -41,7 +41,7 @@
         rem.talk(text);
     };
     ext.moveRobobo = function(wheel,quantity,mtype,speed){
-      if (mtype=="degrees"){
+      if (mtype=='degrees'){
         rem.moveWheelsByDegree(wheel,quantity,speed);
       }else {
         rem.moveWheelsByTime(wheel,quantity,speed);
@@ -127,7 +127,7 @@
           colors: ['white','red','blue','cyan','magenta','yellow','green','orange'],
           status: ['on','off'],
           leds: ['0','1','2','3','4','5','6','7','8','9','all'],
-          ir: ['0','1','2','3','4','5','6','7','8','9'],
+          ir: ['1','2','3','4','5','6','7','8','9'],
         },
     };
 

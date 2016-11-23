@@ -202,7 +202,7 @@ Remote.prototype = {
 
   readIR: function (irnumber) {
 
-    return this.statusmap.get("ir_"+irnumber);
+    return this.statusmap.get("IRSensorStatus"+irnumber);
     //END OF GETLIGHTBRIGHTNESS FUNCTION
   },
 
