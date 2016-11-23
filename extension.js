@@ -77,7 +77,7 @@
       rem.turnInPlace(degrees);
     };
     ext.readIr = function(ir) {
-      return rem.turnInPlace(ir);
+      return rem.readIr(ir);
     };
     ext.newCol = function() {
       if (newcolor){
@@ -90,7 +90,7 @@
 
     ext.readCol = function() {
       return rem.getColor();
-    }
+    };
     ext.changedIr = function(irname) {
       if (lastIrChange == irname){
         return true;
@@ -98,7 +98,7 @@
         lastIrChange = "";
         return false;
       }
-    }
+    };
 
 
     // Block and block menu descriptions
