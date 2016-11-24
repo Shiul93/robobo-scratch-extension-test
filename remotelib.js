@@ -264,12 +264,12 @@ Remote.prototype = {
           this.statusmap.set(key,parseInt(msg.value[key]));
           //console.log(this.statusmap);
           if (this.firstime){
-            this.laststatusmap.set(key,0);
+            this.laststatusmap.set(key,parseInt(msg.value[key]));
           }else{
             var now = parseInt(msg.value[key]);
             var then = this.laststatusmap.get(key);
             console.log(key+" now: "+now);
-            console.console.log(key+" then: "+then);
+            console.log(key+" then: "+then);
             if (now>then){
               if (((now/then)*100)>10){
                 this.laststatusmap.set(key,now);
