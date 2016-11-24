@@ -268,14 +268,16 @@ Remote.prototype = {
           }else{
             var now = parseInt(msg.value[key]);
             var then = this.laststatusmap.get(key);
+            console.log(key+" now: "+now);
+            console.console.log(key+" then: "+then);
             if (now>then){
               if (((now/then)*100)>10){
                 this.laststatusmap.set(key,parseInt(msg.value[key]));
-                this.callbackmap.get("onNewColor")(parseInt(key.slice(-1)));
+                this.callbackmap.get("onIrChanged")(parseInt(key.slice(-1)));
               }
             }else if (((then/now)*100)>10){
               this.laststatusmap.set(key,parseInt(msg.value[key]));
-              this.callbackmap.get("onNewColor")(parseInt(key.slice(-1)));
+              this.callbackmap.get("onIrChanged")(parseInt(key.slice(-1)));
             }
           }
 
