@@ -271,7 +271,7 @@ Remote.prototype = {
             console.log(key+" now: "+now);
             console.log(key+" then: "+then);
             if (now>then){
-              if (((now/then))>5){
+              if (((now/then))>3){
                 this.laststatusmap.set(key,now);
                 this.callbackmap.get("onIrChanged")(parseInt(key.slice(-1)));
               }
