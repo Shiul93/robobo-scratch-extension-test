@@ -19,11 +19,11 @@
         return {status: 2, msg: 'Ready'};
     };
 
-
+    //Callback for color
     ext.onNewColor = function () {
       newcolor = true;
     }
-
+    //Callback for ir changes
     ext.onIrChanged = function (ir) {
       lastIrChange = ir;
     }
@@ -36,10 +36,17 @@
 
     };
 
-    ext.talkRobobo = function(text){
+    //Close connection
+    ext.disconnect = function () {
+      rem.closeConnection();
+    }
 
+    //Speech production function
+    ext.talkRobobo = function(text){
         rem.talk(text);
     };
+
+    //Movement function
     ext.moveRobobo = function(wheel,quantity,mtype,speed){
       if (mtype=='degrees'){
         rem.moveWheelsByDegree(wheel,quantity,speed);
@@ -49,34 +56,42 @@
 
     };
 
+    //Two wheels movement function
     ext.moveRoboboWheels = function(lSpeed,rSpeed,time){
       rem.moveWheelsSeparated(lSpeed,rSpeed,time);
     };
 
+    //Pan movement function
     ext.movePanRobobo = function(degrees, speed){
       rem.movePan(degrees,speed);
     };
 
+    //Tilt movement function
     ext.moveTiltRobobo = function(degrees,speed){
       rem.moveTilt(degrees,speed);
     };
 
+    //Function  to change the displayed emotion
     ext.changeEmotion = function(emotion){
       rem.changeEmotion(emotion);
     };
 
+    //Function to change the led color
     ext.setLedColor = function(led,color){
       rem.setLedColor(led, color);
     };
 
+    //Function to turn on and off the leds
     ext.changeLedStatus = function(led,status){
       rem.setLedColor(led,status);
     };
 
+    //Movement function to rotate on the place
     ext.turnInPlace = function(degrees) {
       rem.turnInPlace(degrees);
     };
 
+    //Hat function that checks for new colors
     ext.newCol = function() {
       if (newcolor){
         newcolor = false;
@@ -86,9 +101,12 @@
       }
     };
 
+    //Reporter function to get the last detected color
     ext.readCol = function() {
       return rem.getColor();
     };
+
+    //Hat function that checks for ir changes
     ext.changedIr = function(irname) {
       if (lastIrChange == irname){
         return true;
@@ -98,11 +116,10 @@
       }
     };
 
+    //Reporter function to get the ir values
     ext.readIrValue = function(ir) {
-      console.log("ESTOY AQUI " + ir);
       var value = 0;
       value = rem.mirarIr(ir);
-      console.log(value);
       return value;
     };
 
@@ -110,6 +127,7 @@
     var descriptor = {
         blocks: [
           [' ', 'connect ROBOBO at %s','connectToRobobo','192.168.0.110'],
+          [' ', 'close connection','disconnect'],
           [' ', 'say %s','talkRobobo','hello world'],
           [' ', 'move wheel %m.wheels by %s %m.mtype at speed %s','moveRobobo','both','1','seconds','50'],
           [' ', 'move wheel left at speed %s and wheel right at speed %s for %s seconds','moveRoboboWheels','50','50','1000'],
@@ -131,7 +149,7 @@
           emotions: ['happy','laughting','sad','angry','surprised','normal'],
           colors: ['white','red','blue','cyan','magenta','yellow','green','orange'],
           status: ['on','off'],
-          leds: ['0','1','2','3','4','5','6','7','8','9','all'],
+          leds: ['1','2','3','4','5','6','7','8','9','all'],
           ir: ['1','2','3','4','5','6','7','8','9'],
         },
     };
