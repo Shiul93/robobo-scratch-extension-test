@@ -3,10 +3,18 @@
 function Remote(ip){
   this.ip = ip;
   this.port = 40404;
+  //WebSocket to stablish the connection
   this.ws = undefined;
+  //Unique command id sent to the server
   this.commandid = 0;
+  //Map of statuses
   this.statusmap = new Map();
+  //Map of last relevant statuses, for comparations
+  this.laststatusmap = new Map();
+  //Map of callbacks registered by the extension
   this.callbackmap = new Map();
+  //First execution mark
+  this.firstime = true;
 //END OF REMOTE OBJECT
 };
 
@@ -36,6 +44,11 @@ Remote.prototype = {
     }
 
     //END OF CONNECT FUNCTION
+  },
+
+  closeConnection: function() {
+    this.ws.close()
+    //END OF CLOSECONNECTION METHOD
   },
 
   sendMessage: function(message) {
@@ -209,11 +222,8 @@ Remote.prototype = {
   },
 
   mirarIr : function (irnumber) {
-    console.log("ASDF");
-
-    console.log(this.statusmap.get("IRSensorStatus"+irnumber));
     return this.statusmap.get("IRSensorStatus"+irnumber);
-    //END OF GETLIGHTBRIGHTNESS FUNCTION
+    //END OF MIRARIR FUNCTION
   },
 
   //ENDSENSING
@@ -253,10 +263,27 @@ Remote.prototype = {
 
           this.statusmap.set(key,parseInt(msg.value[key]));
           //console.log(this.statusmap);
+          if (this.firstime){
+            this.laststatusmap.set(key,parseInt(msg.value[key]));
+          }else{
+            var now = parseInt(msg.value[key]);
+            var then = this.laststatusmap.get(key);
+            if (now>then){
+              if (((now/then)*100)>10){
+                this.laststatusmap.set(key,parseInt(msg.value[key]));
+                this.callbackmap.get("onNewColor").(parseInt(key.slice(-1));
+              }
+            }else if (((then/now)*100)>10){
+              this.laststatusmap.set(key,parseInt(msg.value[key]));
+              this.callbackmap.get("onNewColor").(parseInt(key.slice(-1));
+            }
+          }
+
 
         //  console.log(msg.value[key]);
 
       }
+      this.firstime = false;
     }
     //END MANAGESTATUS FUNCTION
   },
