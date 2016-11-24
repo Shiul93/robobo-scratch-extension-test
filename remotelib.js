@@ -271,11 +271,11 @@ Remote.prototype = {
             console.log(key+" now: "+now);
             console.log(key+" then: "+then);
             if (now>then){
-              if (((now/then)*100)>10){
+              if (((now/then))>10){
                 this.laststatusmap.set(key,now);
                 this.callbackmap.get("onIrChanged")(parseInt(key.slice(-1)));
               }
-            }else if (((then/now)*100)>10){
+            }else if (((then/now))>10){
               this.laststatusmap.set(key,now);
               this.callbackmap.get("onIrChanged")(parseInt(key.slice(-1)));
             }
