@@ -15,3 +15,13 @@ value:
   ir_6: short
   ir_7: short
   ir_8: short
+
+2.
+
+name:
+  NEWCOLOR
+
+value:
+  color: string in ['red','blue','cyan','magenta','yellow','green']
+
+

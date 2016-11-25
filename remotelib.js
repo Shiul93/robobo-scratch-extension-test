@@ -272,6 +272,7 @@ Remote.prototype = {
     }
     if (msg.name == "NEWCOLOR"){
       (this.callbackmap.get("onNewColor"))();
+      console.log("NEWCOLOR");
       console.log(msg.value);
     }
 
@@ -288,8 +289,8 @@ Remote.prototype = {
           }else{
             var now = parseInt(msg.value[key]);
             var then = this.laststatusmap.get(key);
-            console.log(key+" now: "+now);
-            console.log(key+" then: "+then);
+            //console.log(key+" now: "+now);
+            //console.log(key+" then: "+then);
             if (now>then){
               if (((now/then))>3){
                 this.laststatusmap.set(key,now);
