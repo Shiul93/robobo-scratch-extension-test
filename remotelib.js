@@ -273,8 +273,9 @@ Remote.prototype = {
     if (msg.name == "NEWCOLOR"){
       (this.callbackmap.get("onNewColor"))();
       console.log("NEWCOLOR");
-      console.log(msg.value["color"]);
+      //console.log(msg.value["color"]);
       this.statusmap.set("color",msg.value["color"]);
+      console.log(this.statusmap.get("color"));
     }
 
     if (msg.name == "IRSTATUS"){

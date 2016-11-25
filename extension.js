@@ -126,6 +126,7 @@
     ext.readCol = function() {
       var value = 0;
       value =rem.getColor();
+      console.log("Value: "+value);
       return value;
     };
 
