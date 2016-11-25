@@ -273,7 +273,7 @@ Remote.prototype = {
     if (msg.name == "NEWCOLOR"){
       (this.callbackmap.get("onNewColor"))();
       console.log("NEWCOLOR");
-      console.log(msg.value);
+      console.log(msg.value["color"]);
       this.statusmap.set("color",msg.value["color"]);
     }
 
