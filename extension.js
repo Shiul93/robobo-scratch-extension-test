@@ -124,7 +124,9 @@
 
     //Reporter function to get the last detected color
     ext.readCol = function() {
-      return rem.getColor();
+      var value = 0;
+      value =rem.getColor();
+      return value;
     };
 
     //Hat function that checks for ir changes
@@ -158,7 +160,7 @@
           [' ', 'set led %m.leds color to %m.colors','setLedColor','all','blue'],
           [' ', 'set led %m.leds %m.status','changeLedStatus','all', 'off'],
           ['r', 'read IR %m.ir value','readIrValue','1'],
-          ['R', 'read color detected','readCol'],
+          ['r', 'read color detected','readCol'],
           ['h', 'when color is detected','newCol'],
           ['h', 'when ir %m.ir changed','changedIr'],
 
